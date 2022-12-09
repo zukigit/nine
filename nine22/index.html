@@ -1,0 +1,346 @@
+<html>
+    <head>
+        <style>
+            body{
+	margin:0;
+	color:#444;
+	padding:15px;
+	background:#eee;
+	font:300 18px/18px Roboto, sans-serif;
+}
+*,:after,:before{box-sizing:border-box}
+.pull-left{float:left}
+.pull-right{float:right}
+.clearfix:after,.clearfix:before{content:'';display:table}
+.clearfix:after{clear:both;display:block}
+
+.envato-wrap{
+	padding:15px;
+	max-width:400px;
+	background:#fff;
+	margin:5% auto 0;
+	position:relative;
+	border-radius:4px;
+	box-shadow:0 6px 20px 0 rgba(0,0,0,.19),0 8px 17px 0 rgba(0,0,0,.2);
+}
+.envato-wrap .envato-inner .envato-author-name{
+	margin-top:0;
+	margin-bottom:20px;
+}
+.envato-wrap .envato-inner .envato-author-photo{
+	margin-right:15px;
+}
+.envato-wrap .envato-inner .envato-badge{
+	width:45px;
+	height:45px;
+	position:relative;
+	display:inline-block;
+}
+.envato-wrap .envato-inner .envato-badge:before,
+.envato-wrap .envato-inner .envato-badge:after{
+	position:absolute;
+}
+.envato-wrap .envato-inner .envato-badge:before{
+	top:50%;
+	right:50%;
+	color:#333;
+	font-size:18px;
+	margin-top:-8px;
+	margin-right:-12px;
+	font-family:FontAwesome;
+}
+.envato-wrap .envato-inner .envato-badge[data-level]:after{
+	left:0;
+	top:-8px;
+	color:#fff;
+	width:20px;
+	height:20px;
+	font-size:12px;
+	font-weight:500;
+	line-height:20px;
+	text-align:center;
+	border-radius:50%;
+	content:attr(data-level);
+	background:rgba(129,180,65,.85);
+}
+.envato-wrap .envato-inner .envato-badge svg{
+	width:100%;
+	height:100%;
+}
+.envato-wrap .envato-inner .envato-badge svg path{
+	fill:orange;
+}
+
+.envato-wrap .envato-inner .envato-badge-veteran svg path{fill:#b8b9bb}
+.envato-wrap .envato-inner .envato-badge-affiliate svg path{fill:#fb8501}
+.envato-wrap .envato-inner .envato-badge-author svg path{fill:#ffd600}
+.envato-wrap .envato-inner .envato-badge-exclusive svg path{fill:#97dbe8}
+.envato-wrap .envato-inner .envato-badge-country svg path{fill:#dfdfdf}
+
+.envato-wrap .envato-inner .envato-badge-veteran:before{content:'\f1fd'}
+.envato-wrap .envato-inner .envato-badge-affiliate:before{content:'\f0c1'}
+.envato-wrap .envato-inner .envato-badge-author:before{content:'\f1b0'}
+.envato-wrap .envato-inner .envato-badge-exclusive:before{content:'\f219'}
+.envato-wrap .envato-inner .envato-badge-country:before{
+	content:'';
+	width:18px;
+	height:18px;
+	background:url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSIzMi41NzZweCIgaGVpZ2h0PSIzOS44NjVweCIgdmlld0JveD0iMCAwIDMyLjU3NiAzOS44NjUiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDMyLjU3NiAzOS44NjUiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwYXRoIGZpbGw9IiMxRTQ0OEMiIGQ9Ik0wLDBoMC4wMTljMTAuODM3LDYuODE2LDIxLjcyLDEzLjU1NywzMi41NTcsMjAuMzc4Yy02Ljc3NiwwLjAxOS0xMy41NTcsMC0yMC4zMzYsMC4wMDhjNi40ODQsNi41MDIsMTIuOTgsMTIuOTg3LDE5LjQ3MiwxOS40NzlIMFYwIE0xLjM1OSwyLjI3YzAuMDA3LDEyLjA3OS0wLjAwNywyNC4xNjEsMC4wMDcsMzYuMjMxYzkuMDQ2LDAuMDE1LDE4LjA5NCwwLjAwNywyNy4xNDMsMC4wMDdjLTAuMzg4LTAuNDQ5LTAuODQyLTAuODQ5LTEuMjQ0LTEuMjc2Yy01Ljk3NC01Ljk4NC0xMS45NzItMTEuOTM5LTE3LjkyLTE3LjkzOGM2LjM5MS0wLjAxNSwxMi43ODEsMCwxOS4xNzEtMC4wMDdDMTkuNDc1LDEzLjU5NiwxMC40MTIsNy45MzMsMS4zNTksMi4yN0wxLjM1OSwyLjI3eiIvPjxwYXRoIGZpbGw9IiNERTIxNDEiIGQ9Ik0xLjM1OSwyLjI3YzkuMDUzLDUuNjYzLDE4LjExNSwxMS4zMjcsMjcuMTU3LDE3LjAxN2MtNi4zOTEsMC4wMDctMTIuNzgxLTAuMDA3LTE5LjE3MSwwLjAwN2M1Ljk0Nyw1Ljk5OCwxMS45NDYsMTEuOTUzLDE3LjkyLDE3LjkzOGMwLjQwMywwLjQyOCwwLjg1NiwwLjgyNiwxLjI0NCwxLjI3NmMtOS4wNDksMC0xOC4wOTgsMC4wMDctMjcuMTQzLTAuMDA3QzEuMzUyLDI2LjQzMiwxLjM2NywxNC4zNSwxLjM1OSwyLjI3IE03LjQ2OCwxMi4wMDdjLTAuMDk0LDAuMzY2LTAuMTg1LDAuNzI2LTAuMjczLDEuMDkyYy0wLjMzMy0wLjE4Ni0wLjY1My0wLjM5Mi0wLjk3OS0wLjU3OWMwLjA0LDAuMzcyLDAuMTA1LDAuNzQ1LDAuMTU2LDEuMTE4Yy0wLjM3OC0wLjA0LTAuNzQxLTAuMTA1LTEuMTIxLTAuMTUyYzAuMTc3LDAuMzMzLDAuMzg3LDAuNjUyLDAuNTc3LDAuOTc5bC0xLjA3MSwwLjI2MWMwLjIzLDAuMjc1LDAuNTk5LDAuNDU3LDAuODgxLDAuNzA0bC0wLjQ2LDAuMzMzYy0xLjEwNi0wLjYyNy0xLjk2OS0xLjY3My0yLjQzNy0yLjg1NmMtMC4wMDMsMS4zMzIsMC41MDQsMi42NTMsMS40MDQsMy42NGMxLjQ1LDEuNjM5LDMuOTMxLDIuMjIsNS45NTEsMS40MWMyLjA0OC0wLjc1OCwzLjQ5OS0yLjg2OSwzLjQ3LTUuMDU3Yy0wLjQ2OCwxLjE4NC0xLjMyNywyLjIzMi0yLjQzNywyLjg2M2wtMC40NjEtMC4zMzNjMC4yODYtMC4yNDcsMC42MzgtMC40MjgsMC44ODUtMC43MDRsLTEuMDc3LTAuMjYxYzAuMTkyLTAuMzI3LDAuMzk5LTAuNjQ1LDAuNTgtMC45NzljLTAuMzgxLDAuMDQ4LTAuNzQ3LDAuMTEyLTEuMTIxLDAuMTUybDAuMTU2LTEuMTE4Yy0wLjMyNiwwLjE4Ny0wLjY0NSwwLjM5NC0wLjk3OSwwLjU3OWMtMC4wOC0wLjM2Ni0wLjE4Mi0wLjczMy0wLjI3NS0xLjA5MmMtMC4yNTUsMC4yNzktMC40NCwwLjYxMy0wLjY4OSwwLjg5MkM3LjkyLDEyLjYwMSw3LjcxMywxMi4yODYsNy40NjgsMTIuMDA3IE03LjIwMiwyNS4zMzhjLTAuNjUzLTAuNDg3LTEuMjkyLTAuOTk0LTEuOTUxLTEuNDY1YzAuMDg2LDAuODA0LDAuMiwxLjYwMiwwLjI5MywyLjQwOGMtMC44MDQtMC4wODctMS42MS0wLjE5Ni0yLjQxNS0wLjI5YzAuNDcxLDAuNjU5LDAuOTc5LDEuMjk4LDEuNDU5LDEuOTUxYy0wLjc0OCwwLjMyNi0xLjUwMiwwLjYyNC0yLjI0NSwwLjk1OGMwLjc1MSwwLjMxOSwxLjQ5OCwwLjYzOCwyLjI0NSwwLjk1Yy0wLjQ3OSwwLjY2LTAuOTg3LDEuMjk4LTEuNDY2LDEuOTUxYzAuODEyLTAuMDg3LDEuNjE4LTAuMTk1LDIuNDIyLTAuMjljLTAuMDk0LDAuODA1LTAuMjA3LDEuNjEtMC4yOTMsMi40MjNjMC42NTItMC40OTQsMS4zMDUtMC45NzIsMS45NDQtMS40OGMwLjMyNywwLjc0LDAuNjA2LDEuNTEsMC45NzEsMi4yMjdjMC4zMTItMC43MzksMC42MzQtMS40OCwwLjk0Ny0yLjIyN2MwLjYzNywwLjUwNywxLjI5MiwwLjk4NiwxLjk0NCwxLjQ4Yy0wLjA4Ny0wLjgxMi0wLjE5NS0xLjYxOC0wLjI5Ny0yLjQyM2MwLjgwOCwwLjA5NCwxLjYxNCwwLjIwMywyLjQyNiwwLjI5Yy0wLjQ4Mi0wLjY1My0wLjk4Ni0xLjI5MS0xLjQ2NS0xLjk1MWMwLjc0My0wLjMxMSwxLjQ5MS0wLjYzOCwyLjI0NS0wLjk0M2MtMC43NDctMC4zNC0xLjUwMS0wLjYzOC0yLjI0NS0wLjk2NWMwLjQ3OC0wLjY1MywwLjk4Mi0xLjI5MiwxLjQ1OC0xLjk1MWwtMi40MTksMC4yOTdjMC4wOTQtMC44MDUsMC4yMTEtMS42MSwwLjI5Ny0yLjQxNWMtMC42NTksMC40NzgtMS4yOTksMC45NzgtMS45NTEsMS40NjVjLTAuMzA1LTAuNzU1LTAuNjM4LTEuNDk1LTAuOTQ3LTIuMjQ5QzcuODI4LDIzLjgzNiw3LjUxNCwyNC41ODMsNy4yMDIsMjUuMzM4TDcuMjAyLDI1LjMzOHoiLz48cGF0aCBmaWxsPSIjRkZGRkZGIiBkPSJNNy40NjgsMTIuMDA2QzcuNzE1LDEyLjI4NSw3LjkyLDEyLjYsOC4xNSwxMi44OThsMC42ODktMC44OTJjMC4wOTQsMC4zNTksMC4xOTYsMC43MjYsMC4yNzUsMS4wOTJjMC4zMzQtMC4xODYsMC42NTMtMC4zOTIsMC45NzktMC41NzlsLTAuMTU2LDEuMTE4YzAuMzc0LTAuMDQsMC43NC0wLjEwNSwxLjEyMS0wLjE1MmMtMC4xODEsMC4zMzMtMC4zODgsMC42NTItMC41OCwwLjk3OWwxLjA3NywwLjI2MWMtMC4yNDcsMC4yNzUtMC41OTksMC40NTctMC44ODUsMC43MDRsMC40NjEsMC4zMzNjMS4xMDktMC42MywxLjk2OS0xLjY4LDIuNDM3LTIuODYzYzAuMDI5LDIuMTg5LTEuNDIyLDQuMy0zLjQ3LDUuMDU3Yy0yLjAyMSwwLjgwOC00LjUwMiwwLjIyOC01Ljk1MS0xLjQxYy0wLjktMC45ODctMS40MDctMi4zMDgtMS40MDQtMy42NGMwLjQ2OCwxLjE4NCwxLjMzLDIuMjI4LDIuNDM3LDIuODU2bDAuNDYtMC4zMzNjLTAuMjgyLTAuMjQ3LTAuNjUxLTAuNDI4LTAuODgxLTAuNzA0bDEuMDcxLTAuMjYxYy0wLjE5LTAuMzI3LTAuMzk5LTAuNjQ1LTAuNTc3LTAuOTc5YzAuMzgsMC4wNDgsMC43NDMsMC4xMTIsMS4xMjEsMC4xNTJjLTAuMDUxLTAuMzczLTAuMTE2LTAuNzQ2LTAuMTU2LTEuMTE4YzAuMzI2LDAuMTg3LDAuNjQ1LDAuMzk0LDAuOTc5LDAuNTc5QzcuMjg0LDEyLjczMiw3LjM3MywxMi4zNzIsNy40NjgsMTIuMDA2TDcuNDY4LDEyLjAwNnogTTcuMjAyLDI1LjMzNmMwLjMxMi0wLjc1NSwwLjYyNy0xLjUwMSwwLjk1OC0yLjI0OWMwLjMwOCwwLjc1NCwwLjY0MSwxLjQ5NCwwLjk0NywyLjI0OWMwLjY1Mi0wLjQ4NywxLjI5Mi0wLjk4NywxLjk1MS0xLjQ2NWMtMC4wODcsMC44MDQtMC4yMDMsMS42MS0wLjI5NywyLjQxNWwyLjQxOS0wLjI5N2MtMC40NzUsMC42NTktMC45NzksMS4yOTgtMS40NTgsMS45NTFjMC43NDMsMC4zMjYsMS40OTgsMC42MjQsMi4yNDUsMC45NjVjLTAuNzU0LDAuMzA0LTEuNTAxLDAuNjMxLTIuMjQ1LDAuOTQzYzAuNDc4LDAuNjYsMC45ODIsMS4yOTgsMS40NjUsMS45NTFjLTAuODEzLTAuMDg3LTEuNjE4LTAuMTk1LTIuNDI2LTAuMjljMC4xMDIsMC44MDUsMC4yMTEsMS42MSwwLjI5NywyLjQyM2MtMC42NTItMC40OTQtMS4zMDYtMC45NzItMS45NDQtMS40OGMtMC4zMTIsMC43NDctMC42MzQsMS40ODgtMC45NDcsMi4yMjdjLTAuMzY2LTAuNzE3LTAuNjQ1LTEuNDg3LTAuOTcxLTIuMjI3Yy0wLjYzOCwwLjUwNy0xLjI5MiwwLjk4Ni0xLjk0NCwxLjQ4YzAuMDg2LTAuODEyLDAuMi0xLjYxOCwwLjI5My0yLjQyM2MtMC44MDQsMC4wOTQtMS42MSwwLjIwMy0yLjQyMiwwLjI5YzAuNDc4LTAuNjUzLDAuOTg2LTEuMjkxLDEuNDY2LTEuOTUxYy0wLjc0OC0wLjMxMS0xLjQ5NS0wLjYzMS0yLjI0NS0wLjk1YzAuNzQ0LTAuMzMzLDEuNDk4LTAuNjMxLDIuMjQ1LTAuOTU4Yy0wLjQ3OS0wLjY1My0wLjk4Ny0xLjI5Mi0xLjQ1OS0xLjk1MWMwLjgwNSwwLjA5NCwxLjYxLDAuMjAzLDIuNDE1LDAuMjljLTAuMDk0LTAuODA1LTAuMjA3LTEuNjAzLTAuMjkzLTIuNDA4QzUuOTExLDI0LjM0MSw2LjU1LDI0Ljg0OSw3LjIwMiwyNS4zMzZMNy4yMDIsMjUuMzM2eiIvPjwvc3ZnPg==) no-repeat center;
+	background-size:contain;
+}
+
+.envato-wrap .envato-inner .envato-plus{
+	top:50%;
+	color:#fff;
+	width:50px;
+	right:-25px;
+	height:50px;
+	font-size:25px;
+	margin-top:-25px;
+	line-height:48px;
+	text-align:center;
+	position:absolute;
+	border-radius:50%;
+	background:#e74c3c;
+	text-decoration:none;
+}
+.envato-wrap .envato-author-text{
+	font-size:16px;
+	margin-bottom:0;
+	line-height:20px;
+	text-align:center;
+}
+.wish-text{
+	margin:30px 0;
+	font-size:36px;
+	font-weight:100;
+	line-height:36px;
+	text-align:center;
+	text-transform:lowercase;
+}
+.wish-text span{
+	font-weight:bold;
+	font-family:'Varela Round',sans-serif;
+}
+
+.envato-animate{
+	left:50%;
+	width:1000px;
+	bottom:50px;
+	position:absolute;
+	text-align:center;
+	margin-left:-450px;
+}
+.envato-animate .envato-balloon{
+	width:50px;
+	height:70px;
+	color:#fff;
+	font-size:24px;
+	line-height:50px;
+	position:relative;
+	font-weight:bold;
+	text-align:center;
+	border-radius:50%;
+	background:#e74c3c;
+	display:inline-block;
+	animation-fill-mode:forwards;
+	font-family:'Varela Round',sans-serif;
+}
+.envato-animate .envato-balloon:after{
+	width:0;
+	height:0;
+	left:50%;
+	content:'';
+	bottom:-8px;
+	margin-left:-8px;
+	position:absolute;
+	border:8px solid transparent;
+	border-bottom:8px solid #e74c3c;
+}
+.envato-animate .envato-balloon:nth-child(1){
+	animation:balloon 2s infinite;
+}
+.envato-animate .envato-balloon:nth-child(2){
+	background:#2ecc71;
+	animation:balloon2 1.2s infinite;
+}
+.envato-animate .envato-balloon:nth-child(2):after{border-bottom-color:#2ecc71}
+
+.envato-animate .envato-balloon:nth-child(3){
+	background:#f39c12;
+	animation:balloon3 2.1s infinite;
+}
+.envato-animate .envato-balloon:nth-child(3):after{border-bottom-color:#f39c12}
+
+.envato-animate .envato-balloon:nth-child(4){
+	background:#34495e;
+	animation:balloon4 2s infinite;
+}
+.envato-animate .envato-balloon:nth-child(4):after{border-bottom-color:#34495e}
+
+.envato-animate .envato-balloon:nth-child(5){
+	background:#9b59b6;
+	animation:balloon5 1.5s infinite;
+}
+.envato-animate .envato-balloon:nth-child(5):after{border-bottom-color:#9b59b6}
+
+.envato-animate .envato-balloon:nth-child(6){
+	background:#3498db;
+	animation:balloon6 2s infinite;
+}
+.envato-animate .envato-balloon:nth-child(6):after{border-bottom-color:#3498db}
+
+.envato-animate .envato-balloon:nth-child(7){
+	background:#e74c3c;
+	animation:balloon6 3s infinite;
+}
+.envato-animate .envato-balloon:nth-child(7):after{border-bottom-color:#3498db}
+
+.envato-animate .envato-balloon:nth-child(8){
+	background:#2ecc71;
+	animation:balloon6 1.2s infinite;
+}
+.envato-animate .envato-balloon:nth-child(8):after{border-bottom-color:#3498db}
+
+.envato-animate .envato-balloon:nth-child(9){
+	background:#f39c12;
+	animation:balloon6 2.1s infinite;
+}
+.envato-animate .envato-balloon:nth-child(9):after{border-bottom-color:#3498db}
+
+.envato-animate .envato-balloon:nth-child(10){
+	background:#34495e;
+	animation:balloon6 2s infinite;
+}
+.envato-animate .envato-balloon:nth-child(10):after{border-bottom-color:#3498db}
+
+.envato-animate .envato-balloon:nth-child(11){
+	background:#9b59b6;
+	animation:balloon6 1.5s infinite;
+}
+.envato-animate .envato-balloon:nth-child(11):after{border-bottom-color:#3498db}
+
+.envato-animate .envato-balloon:nth-child(12){
+	background:#3498db;
+	animation:balloon6 2s infinite;
+}
+.envato-animate .envato-balloon:nth-child(12):after{border-bottom-color:#3498db}
+
+.envato-animate .envato-balloon:nth-child(13){
+	background:#e74c3c;
+	animation:balloon6 3s infinite;
+}
+.envato-animate .envato-balloon:nth-child(13):after{border-bottom-color:#3498db}
+
+.envato-animate .envato-balloon:nth-child(14){
+	background:#2ecc71;
+	animation:balloon6 1.2s infinite;
+}
+.envato-animate .envato-balloon:nth-child(14):after{border-bottom-color:#3498db}
+
+.envato-animate .envato-balloon:nth-child(15){
+	background:#f39c12;
+	animation:balloon6 2.1s infinite;
+}
+.envato-animate .envato-balloon:nth-child(15):after{border-bottom-color:#3498db}
+
+.envato-animate .envato-balloon:nth-child(16){
+	background:#34495e;
+	animation:balloon6 2s infinite;
+}
+.envato-animate .envato-balloon:nth-child(16):after{border-bottom-color:#3498db}
+
+
+@keyframes balloon{
+	0%{
+		transform:translateY(0) rotate(0);
+	}
+	50%{
+		transform:translateY(-10px) rotate(5deg);
+	}
+	100%{
+		transform:translateY(0) rotate(0);
+	}
+}
+@keyframes balloon2{
+	0%,
+	100%{
+		transform:translate(5px,-5px) rotate(2deg);
+	}
+	50%{
+		transform:translate(-10px,5px) rotate(-10deg);
+	}
+}
+@keyframes balloon3{
+	0%,
+	100%{
+		transform:translate(0,-5px) rotate(2deg);
+	}
+	50%{
+		transform:translate(0,10px) rotate(-2deg);
+	}
+}
+@keyframes balloon4{
+	0%,
+	100%{
+		transform:translate(-5px,-15px) rotate(2deg);
+	}
+	50%{
+		transform:translate(10px,5px) rotate(-8deg);
+	}
+}
+@keyframes balloon5{
+	0%,
+	100%{
+		transform:translate(-5px,0) rotate(2deg);
+	}
+	50%{
+		transform:translate(15px,-10px) rotate(-5deg);
+	}
+}
+@keyframes balloon6{
+	0%,
+	100%{
+		transform:translate(0,0) rotate(2deg);
+	}
+	50%{
+		transform:translate(0,-20px) rotate(-5deg);
+	}
+}
+        </style>
+    </head>
+    <body>
+        <div class="envato-wrap">
+            <div class="envato-inner clearfix">
+                <a class="pull-left envato-author-photo" href="http://themeforest.net/user/khadkamhn" target="_blank">
+                    <img src="nine.jpg" alt="khadkamhn">
+                </a>
+                <div class="pull-left envato-author-detail">
+                    <h4 class="envato-author-name">Aye Mohn Mohn Naing</h4>
+                </div>
+            </div>
+            <p class="envato-author-text">My lovely girl, be happy in your 22th birthday.</p>
+        </div>
+        
+        <div class="wish-text">Happy Birthday <span>Nine</span>!</div>
+        
+        <div class="envato-animate">
+            <span class="envato-balloon">A</span>
+            <span class="envato-balloon">y</span>
+            <span class="envato-balloon">e</span>
+            <span class="envato-balloon">M</span>
+            <span class="envato-balloon">o</span>
+            <span class="envato-balloon">h</span>
+            <span class="envato-balloon">n</span>
+            <span class="envato-balloon">M</span>
+            <span class="envato-balloon">o</span>
+            <span class="envato-balloon">h</span>
+            <span class="envato-balloon">n</span>
+            <span class="envato-balloon">N</span>
+            <span class="envato-balloon">a</span>
+            <span class="envato-balloon">i</span>
+            <span class="envato-balloon">n</span>
+            <span class="envato-balloon">g</span>
+        </div>
+    </body>
+</html>
